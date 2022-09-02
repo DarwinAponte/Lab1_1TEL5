@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="nuevoJuego"
     tools:context=".memoria_pt2">
 
     <Button
@@ -63,6 +64,7 @@
         android:layout_marginTop="63dp"
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="48dp"
+        android:onClick="nuevoJuego"
         android:text="Nuevo"
         app:layout_constraintBottom_toTopOf="@+id/buttonEstad"
         app:layout_constraintEnd_toEndOf="parent"
