@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+    }
+    public void irAMemoria(View view){
+        Intent intent = new Intent(MainActivity.this, memoria.class);
+        startActivityForResult(intent, 1);
     }
 
     public void JuegoTresEnRaya(View view){
