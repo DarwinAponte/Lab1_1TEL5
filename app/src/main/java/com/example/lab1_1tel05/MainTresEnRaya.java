@@ -2,6 +2,7 @@ package com.example.lab1_1tel05;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,12 +10,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
 public class MainTresEnRaya extends AppCompatActivity {
 
     //valores para saber el ganador
     int a=1;
     int b=4;
 
+    //para validar que jugador es par=jugador1 & impar=jugador2
     int contador = 1;
     // row
     int winLine1 = 0;
@@ -27,6 +33,10 @@ public class MainTresEnRaya extends AppCompatActivity {
     //diagonal
     int winDiagDown = 0;
     int winDiagUP = 0;
+    //para contar la cantidad de partidas
+    List<String> statusPartido = new ArrayList<String>();
+
+
 
 //    int matriz[][] = new int[3][3];
 
@@ -245,7 +255,12 @@ public class MainTresEnRaya extends AppCompatActivity {
     }
 
     public void nuevoJuego(View view){
-        int [][] matriz = {{0,0,0},{0,0,0},{0,0,0}};
+        for (int x=0; x < matriz.length; x++) {
+            for (int y=0; y < matriz[x].length; y++) {
+                matriz[x][y]=0;
+            }
+        }
+
 
         TextView txt11=findViewById(R.id.btn_11);
         txt11.setText("-");
@@ -283,6 +298,12 @@ public class MainTresEnRaya extends AppCompatActivity {
 
     }
 
+    public void verEstadisticas(View view){
+        Intent intent = new Intent(this, MainEstadistica3Raya.class);
+        intent.putStringArrayListExtra("partidas", (ArrayList<String>) statusPartido);
+        startActivity(intent);
+    }
+
 
     //para validar
     private void validarGanador() {
@@ -315,11 +336,13 @@ public class MainTresEnRaya extends AppCompatActivity {
                 winCol1==3 || winCol2==3 || winCol3==3 ||
                 winDiagDown==3 || winDiagUP==3 ){
             muestraResult.setText("Ganó O");
+            statusPartido.add("Ganó O");
         }
         if(winLine1==12 || winLine2==12 || winLine3==12 ||
                 winCol1==12 || winCol2==12 ||winCol3==12 ||
                 winDiagDown==12 ||winDiagUP==12){
             muestraResult.setText("Ganó X");
+            statusPartido.add("Ganó X");
         }
     }
 }
