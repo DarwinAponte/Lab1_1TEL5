@@ -15,11 +15,9 @@ import java.util.List;
 import java.util.Vector;
 
 public class MainTresEnRaya extends AppCompatActivity {
-
     //valores para saber el ganador
     int a=1;
     int b=4;
-
     //para validar que jugador es par=jugador1 & impar=jugador2
     int contador = 1;
     // row
@@ -35,27 +33,18 @@ public class MainTresEnRaya extends AppCompatActivity {
     int winDiagUP = 0;
     //para contar la cantidad de partidas
     List<String> statusPartido = new ArrayList<String>();
-
-
-
 //    int matriz[][] = new int[3][3];
-
-
     int [][] matriz = {{0,0,0},{0,0,0},{0,0,0}};
-
-
     boolean estado = true;
-
-
-
-
+    boolean termino=false;
+    //para contar los casillero usados
+    int cantCasilleroInUse=0;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_tres_en_raya);
-
 
         if(estado){
             Button btn11= (Button) findViewById(R.id.btn_11);
@@ -261,39 +250,32 @@ public class MainTresEnRaya extends AppCompatActivity {
             }
         }
 
-
         TextView txt11=findViewById(R.id.btn_11);
         txt11.setText("-");
-
         TextView txt12=findViewById(R.id.btn_12);
         txt12.setText("-");
-
         TextView txt13=findViewById(R.id.btn_13);
         txt13.setText("-");
 
-
         TextView txt21=findViewById(R.id.btn_21);
         txt21.setText("-");
-
         TextView txt22=findViewById(R.id.btn_22);
         txt22.setText("-");
-
         TextView txt23=findViewById(R.id.btn_23);
         txt23.setText("-");
 
-
         TextView txt31=findViewById(R.id.btn_31);
         txt31.setText("-");
-
         TextView txt32=findViewById(R.id.btn_32);
         txt32.setText("-");
-
         TextView txt33=findViewById(R.id.btn_33);
         txt33.setText("-");
 
+        if(cantCasilleroInUse<9 && cantCasilleroInUse>0 && !termino){
+            statusPartido.add("Canceló");
+        }
+
         TextView muestraResult= findViewById(R.id.l3_notificaciones);
-
-
         muestraResult.setText("");
 
     }
@@ -307,6 +289,7 @@ public class MainTresEnRaya extends AppCompatActivity {
 
     //para validar
     private void validarGanador() {
+        termino=false;
         Log.d("turn", "-------------------");
         for (int x=0; x < matriz.length; x++) {
             System.out.print("|");
@@ -318,7 +301,6 @@ public class MainTresEnRaya extends AppCompatActivity {
         }
 
         TextView muestraResult= findViewById(R.id.l3_notificaciones);
-
 
         winDiagDown=matriz[0][0]+matriz[1][1]+matriz[2][2];
         winDiagUP=matriz[2][0]+matriz[1][1]+matriz[0][2];
@@ -337,12 +319,33 @@ public class MainTresEnRaya extends AppCompatActivity {
                 winDiagDown==3 || winDiagUP==3 ){
             muestraResult.setText("Ganó O");
             statusPartido.add("Ganó O");
+            termino=true;
         }
         if(winLine1==12 || winLine2==12 || winLine3==12 ||
                 winCol1==12 || winCol2==12 ||winCol3==12 ||
                 winDiagDown==12 ||winDiagUP==12){
             muestraResult.setText("Ganó X");
             statusPartido.add("Ganó X");
+            termino=true;
         }
+
+        //para contar si la matriz esta llena
+        int valCal=0;
+        for(int x=0;x <matriz.length;x++){
+            for(int y=0;y <matriz.length;y++){
+                if(matriz[x][y]!=0){
+                    valCal++;
+                    //Log.d("valCal", String.valueOf(valCal));
+                }
+            }
+        }
+        cantCasilleroInUse=0;
+        if(valCal==9){
+            muestraResult.setText("Empate");
+            statusPartido.add("Empate");
+            termino=true;
+        }
+        cantCasilleroInUse=valCal;
+        Log.d("valCal", String.valueOf(cantCasilleroInUse));
     }
 }
