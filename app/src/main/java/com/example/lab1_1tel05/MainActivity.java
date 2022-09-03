@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void irAMemoria(View view){
         Intent intent = new Intent(MainActivity.this, memoria.class);
-        startActivityForResult(intent, 1);
+        startActivity(intent);
     }
 
     public void JuegoTresEnRaya(View view){
