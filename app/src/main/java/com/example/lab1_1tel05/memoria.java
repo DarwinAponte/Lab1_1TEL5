@@ -14,12 +14,12 @@ import java.util.Collections;
 import java.util.Random;
 
 public class memoria extends AppCompatActivity {
-
+    private final ArrayList<String> letras = new ArrayList();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memoria);
-        ArrayList<String> letras = new ArrayList();
+        //ArrayList<String> letras = new ArrayList();
         Random rndm = new Random();
         letras.add("A");
         letras.add("A");
@@ -39,7 +39,7 @@ public class memoria extends AppCompatActivity {
         letras.add("H");
         Collections.shuffle(letras, rndm);
         Log.d("lista",""+letras);
-
+        Log.d("msg","se crea lista en on create");
         Button btn1 = findViewById(R.id.button1);
         btn1.setText(String.valueOf(letras.get(0)));
 
@@ -271,26 +271,9 @@ public class memoria extends AppCompatActivity {
     }
 
     public void nuevoJuego(View view){
-        ArrayList<String> letras = new ArrayList();
-        letras.add("A");
-        letras.add("A");
-        letras.add("B");
-        letras.add("B");
-        letras.add("C");
-        letras.add("C");
-        letras.add("D");
-        letras.add("D");
-        letras.add("E");
-        letras.add("E");
-        letras.add("F");
-        letras.add("F");
-        letras.add("G");
-        letras.add("G");
-        letras.add("H");
-        letras.add("H");
         Random rndm = new Random();
         Collections.shuffle(letras, rndm);
-
+        Log.d("msg", "se crea lista en nuevo juego");
         Button btn1 = findViewById(R.id.button1);
         btn1.setText(String.valueOf(letras.get(0)));
         Button btn2= findViewById(R.id.button2);
