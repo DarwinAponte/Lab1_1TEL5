@@ -25,7 +25,11 @@ public class memoria extends AppCompatActivity {
     private final int[] botonesId = {R.id.button1,R.id.button2,R.id.button3,R.id.button4,
             R.id.button5,R.id.button6,R.id.button7,R.id.button8,R.id.button9,R.id.button10,R.id.button11,R.id.button12,R.id.button13,R.id.button14,R.id.button15};
     private final  ArrayList<Integer> numeroBotonPresionado = new ArrayList();
+    private final ArrayList<Button> botones = new ArrayList();
+
+
     private Instant start, end;
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,7 @@ public class memoria extends AppCompatActivity {
         }
         //ArrayList<String> letras = new ArrayList();
         Random rndm = new Random();
-        Handler handler = new Handler();
+
         letras.add("A");
         letras.add("A");
         letras.add("B");
@@ -56,9 +60,10 @@ public class memoria extends AppCompatActivity {
         letras.add("H");
         letras.add("H");
         Collections.shuffle(letras, rndm);
-        Log.d("lista",""+letras);
-        Log.d("msg","se crea lista en on create");
+
+
         Button btn1 = findViewById(R.id.button1);
+        botones.add(btn1);
         btn1.setText(String.valueOf(letras.get(0)));
 
         btn1.setOnClickListener(new View.OnClickListener(){
@@ -67,107 +72,19 @@ public class memoria extends AppCompatActivity {
             public void onClick(View v){
 
                 btn1.setText(String.valueOf(letras.get(0)));
-
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(0));
-                    numeroBotonPresionado.add(0);
-                    Log.d("msg","botonrd presionados"+numeroBotonPresionado);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            int primerboton= numeroBotonPresionado.get(1);
-                            Log.d("msg","primer boton presionado: "+primerboton);
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn1.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-
-                }
+                memoria(0);
             }
-
-
         });
 
         Button btn2= findViewById(R.id.button2);
         btn2.setText(String.valueOf(letras.get(1)));
-
+        botones.add(btn2);
         btn2.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn2.setText(String.valueOf(letras.get(1)));
-                numeroBotonPresionado.add(1);
-                Log.d("msg",""+numeroBotonPresionado);
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(1));
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    matched.add(1);
-                                    btn2.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(1);
             }
 
 
@@ -175,104 +92,26 @@ public class memoria extends AppCompatActivity {
 
         Button btn3= findViewById(R.id.button3);
         btn3.setText(String.valueOf(letras.get(2)));
-
+        botones.add(btn3);
         btn3.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn3.setText(String.valueOf(letras.get(2)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(2));
-                    numeroBotonPresionado.add(2);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn3.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(2);
             }
 
         });
 
         Button btn4= findViewById(R.id.button4);
         btn4.setText(String.valueOf(letras.get(3)));
-
+        botones.add(btn4);
         btn4.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn4.setText(String.valueOf(letras.get(3)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(3));
-                    numeroBotonPresionado.add(3);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn4.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(3);
             }
 
 
@@ -281,52 +120,13 @@ public class memoria extends AppCompatActivity {
 
         Button btn5= findViewById(R.id.button5);
         btn5.setText(String.valueOf(letras.get(4)));
-
+        botones.add(btn5);
         btn5.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn5.setText(String.valueOf(letras.get(4)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(4));
-                    numeroBotonPresionado.add(4);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn5.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(4);
             }
 
 
@@ -334,52 +134,14 @@ public class memoria extends AppCompatActivity {
 
 
         Button btn6= findViewById(R.id.button6);
+        botones.add(btn6);
         btn6.setText(String.valueOf(letras.get(5)));
         btn6.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn6.setText(String.valueOf(letras.get(5)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(5));
-                    numeroBotonPresionado.add(5);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn6.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(5);
             }
 
 
@@ -387,514 +149,132 @@ public class memoria extends AppCompatActivity {
 
 
         Button btn7= findViewById(R.id.button7);
+        botones.add(btn7);
         btn7.setText(String.valueOf(letras.get(6)));
         btn7.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn7.setText(String.valueOf(letras.get(6)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(6));
-                    numeroBotonPresionado.add(6);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn7.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(6);
             }
 
 
         });
 
         Button btn8= findViewById(R.id.button8);
+        botones.add(btn8);
         btn8.setText(String.valueOf(letras.get(7)));
         btn8.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn8.setText(String.valueOf(letras.get(7)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(7));
-                    numeroBotonPresionado.add(7);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn8.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(7);
             }
 
 
         });
 
         Button btn9= findViewById(R.id.button9);
+        botones.add(btn9);
         btn9.setText(String.valueOf(letras.get(8)));
         btn9.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn9.setText(String.valueOf(letras.get(8)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(8));
-                    numeroBotonPresionado.add(8);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn9.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(8);
             }
 
 
         });
 
         Button btn10= findViewById(R.id.button10);
+        botones.add(btn10);
         btn10.setText(String.valueOf(letras.get(9)));
         btn10.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn10.setText(String.valueOf(letras.get(9)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(9));
-                    numeroBotonPresionado.add(9);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn10.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(9);
             }
 
 
         });
 
         Button btn11= findViewById(R.id.button11);
+        botones.add(btn11);
         btn11.setText(String.valueOf(letras.get(10)));
         btn11.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn11.setText(String.valueOf(letras.get(10)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(10));
-                    numeroBotonPresionado.add(10);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn11.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(10);
             }
         });
 
         Button btn12= findViewById(R.id.button12);
+        botones.add(btn12);
         btn12.setText(String.valueOf(letras.get(11)));
         btn12.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn12.setText(String.valueOf(letras.get(11)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(11));
-                    numeroBotonPresionado.add(11);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn12.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(11);
             }
         });
 
         Button btn13= findViewById(R.id.button13);
+        botones.add(btn13);
         btn13.setText(String.valueOf(letras.get(12)));
         btn13.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn13.setText(String.valueOf(letras.get(12)));
-                numeroBotonPresionado.add(12);
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(12));
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn13.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(12);
             }
         });
 
         Button btn14= findViewById(R.id.button14);
+        botones.add(btn14);
         btn14.setText(String.valueOf(letras.get(13)));
         btn14.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn14.setText(String.valueOf(letras.get(13)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(13));
-                    numeroBotonPresionado.add(13);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn14.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(13);
             }
         });
 
         Button btn15= findViewById(R.id.button15);
+        botones.add(btn15);
         btn15.setText(String.valueOf(letras.get(14)));
         btn15.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn15.setText(String.valueOf(letras.get(14)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(14));
-                    numeroBotonPresionado.add(14);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn15.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()==8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(14);
             }
         });
 
         Button btn16= findViewById(R.id.button16);
+        botones.add(btn16);
         btn16.setText(String.valueOf(letras.get(15)));
         btn16.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View v){
                 btn16.setText(String.valueOf(letras.get(15)));
-                if(letrasExtraidas.size()<=2){
-                    letrasExtraidas.add(letras.get(15));
-                    numeroBotonPresionado.add(15);
-                    if(letrasExtraidas.size()==2){
-                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
-                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
-                            handler.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    btn16.setText("-");
-                                    boton.setText("-");
-                                }
-                            }, 1000);
-
-                        }
-                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
-                            matched.add(1);
-                            if(matched.size()>=8){
-                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                    end = Instant.now();
-                                }
-                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
-
-                                    Log.d("msg", String.valueOf(seconds));
-                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
-
-                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
-                                    estadisticas.add(estadistica);
-
-                                    TextView msg = (TextView) findViewById(R.id.msg);
-                                    msg.setText(tiempo_partida);
-                                }
-                                matched.clear();
-                            }
-                        }
-                        letrasExtraidas.clear();
-                        numeroBotonPresionado.clear();
-                    }
-                }
+                memoria(15);
             }
         });
-
-
 
 
         handler.postDelayed(new Runnable() {
@@ -918,17 +298,15 @@ public class memoria extends AppCompatActivity {
                 btn16.setText("-");
             }
         }, 1000);
-
-
-
     }
 
    public void nuevoJuego(View view){
         Random rndm = new Random();
+        Handler handler = new Handler();
         Collections.shuffle(letras, rndm);
         matched.clear();
         TextView tiempo = (TextView) findViewById(R.id.msg);
-       tiempo.setText("");
+        tiempo.setText("");
 
         Button btn1 = findViewById(R.id.button1);
         btn1.setText(String.valueOf(letras.get(0)));
@@ -963,7 +341,7 @@ public class memoria extends AppCompatActivity {
         Button btn16= findViewById(R.id.button16);
         btn16.setText(String.valueOf(letras.get(15)));
 
-        Handler handler = new Handler();
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -1015,4 +393,49 @@ public class memoria extends AppCompatActivity {
         startActivity(intent);
     }
 
+   public void memoria(int i){
+       if(letrasExtraidas.size()<=2) {
+           letrasExtraidas.add(letras.get(i));
+           numeroBotonPresionado.add(i);
+           Log.d("msg", "botonrd presionados" + numeroBotonPresionado);
+           if (letrasExtraidas.size() == 2) {
+               if (letrasExtraidas.get(0) != letrasExtraidas.get(1)) {
+                   Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+
+                   handler.postDelayed(new Runnable() {
+                       @Override
+                       public void run() {
+                           botones.get(i).setText("-");
+                           boton.setText("-");
+
+                       }
+                   }, 1000);
+               }
+               if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                   matched.add(1);
+                   Log.d("msg", String.valueOf(matched.size()));
+                   if(matched.size()==8){
+                       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                           end = Instant.now();
+                       }
+                       if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                           long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                           Log.d("msg", String.valueOf(seconds));
+                           String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                           String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                           estadisticas.add(estadistica);
+
+                           TextView msg = (TextView) findViewById(R.id.msg);
+                           msg.setText(tiempo_partida);
+                       }
+                       matched.clear();
+                   }
+               }
+               letrasExtraidas.clear();
+               numeroBotonPresionado.clear();
+           }
+       }
+   }
 }
