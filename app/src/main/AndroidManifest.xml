@@ -20,7 +20,8 @@
             android:exported="false" />
         <activity
             android:name=".memoria"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainTresEnRaya"
             android:label="@string/tituloInicio"

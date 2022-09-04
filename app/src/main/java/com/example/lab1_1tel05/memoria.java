@@ -15,12 +15,18 @@ import java.util.Random;
 
 public class memoria extends AppCompatActivity {
     private final ArrayList<String> letras = new ArrayList();
+    private final ArrayList<String> letrasExtraidas = new ArrayList();
+    private final int[] botonesId = {R.id.button1,R.id.button2,R.id.button3,R.id.button4,
+            R.id.button5,R.id.button6,R.id.button7,R.id.button8,R.id.button9,R.id.button10,R.id.button11,R.id.button12,R.id.button13,R.id.button14,R.id.button15};
+    private final  ArrayList<Integer> numeroBotonPresionado = new ArrayList();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memoria);
         //ArrayList<String> letras = new ArrayList();
         Random rndm = new Random();
+        Handler handler = new Handler();
         letras.add("A");
         letras.add("A");
         letras.add("B");
@@ -47,7 +53,32 @@ public class memoria extends AppCompatActivity {
 
             @Override
             public void onClick(View v){
+
                 btn1.setText(String.valueOf(letras.get(0)));
+
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(0));
+                    numeroBotonPresionado.add(0);
+                    Log.d("msg","botonrd presionados"+numeroBotonPresionado);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            int primerboton= numeroBotonPresionado.get(1);
+                            Log.d("msg","primer boton presionado: "+primerboton);
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn1.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+
+                }
             }
 
 
@@ -61,6 +92,27 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn2.setText(String.valueOf(letras.get(1)));
+                numeroBotonPresionado.add(1);
+                Log.d("msg",""+numeroBotonPresionado);
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(1));
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn2.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -74,6 +126,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn3.setText(String.valueOf(letras.get(2)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(2));
+                    numeroBotonPresionado.add(2);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn3.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
         });
@@ -86,6 +157,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn4.setText(String.valueOf(letras.get(3)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(3));
+                    numeroBotonPresionado.add(3);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn4.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -100,6 +190,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn5.setText(String.valueOf(letras.get(4)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(4));
+                    numeroBotonPresionado.add(4);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn5.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -113,6 +222,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn6.setText(String.valueOf(letras.get(5)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(5));
+                    numeroBotonPresionado.add(5);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn6.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -126,6 +254,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn7.setText(String.valueOf(letras.get(6)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(6));
+                    numeroBotonPresionado.add(6);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn7.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -138,6 +285,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn8.setText(String.valueOf(letras.get(7)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(7));
+                    numeroBotonPresionado.add(7);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn8.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -150,6 +316,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn9.setText(String.valueOf(letras.get(8)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(8));
+                    numeroBotonPresionado.add(8);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn9.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -162,6 +347,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn10.setText(String.valueOf(letras.get(9)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(9));
+                    numeroBotonPresionado.add(9);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn10.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
 
 
@@ -174,6 +378,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn11.setText(String.valueOf(letras.get(10)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(10));
+                    numeroBotonPresionado.add(10);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn11.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
         });
 
@@ -184,6 +407,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn12.setText(String.valueOf(letras.get(11)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(11));
+                    numeroBotonPresionado.add(11);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn12.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
         });
 
@@ -194,6 +436,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn13.setText(String.valueOf(letras.get(12)));
+                numeroBotonPresionado.add(12);
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(12));
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn13.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
         });
 
@@ -204,6 +465,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn14.setText(String.valueOf(letras.get(13)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(13));
+                    numeroBotonPresionado.add(13);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn14.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
         });
 
@@ -214,6 +494,25 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn15.setText(String.valueOf(letras.get(14)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(14));
+                    numeroBotonPresionado.add(14);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn15.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
         });
 
@@ -224,10 +523,29 @@ public class memoria extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 btn16.setText(String.valueOf(letras.get(15)));
+                if(letrasExtraidas.size()<=2){
+                    letrasExtraidas.add(letras.get(15));
+                    numeroBotonPresionado.add(15);
+                    if(letrasExtraidas.size()==2){
+                        if(letrasExtraidas.get(0) != letrasExtraidas.get(1)){
+                            Button boton = (Button) findViewById(botonesId[numeroBotonPresionado.get(0)]);
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    btn16.setText("-");
+                                    boton.setText("-");
+                                }
+                            }, 1000);
+
+                        }
+                        letrasExtraidas.clear();
+                        numeroBotonPresionado.clear();
+                    }
+                }
             }
         });
 
-        Handler handler = new Handler();
+
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
