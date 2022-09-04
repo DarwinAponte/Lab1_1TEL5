@@ -666,7 +666,10 @@ public class memoria extends AppCompatActivity {
 
     }
 
-
+    public void memoriaEstadisticas(View view){
+        Intent intent= new Intent(memoria.this, memoria_estadistica.class);
+        startActivity(intent);
+    }
 
 
 
