@@ -3,27 +3,39 @@ package com.example.lab1_1tel05;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.HashMap;
 
 public class memoria extends AppCompatActivity {
     private final ArrayList<String> letras = new ArrayList();
     private final ArrayList<String> letrasExtraidas = new ArrayList();
+    private final ArrayList<Integer> matched = new ArrayList();
+    public ArrayList<String> estadisticasMemo = new ArrayList();
     private final int[] botonesId = {R.id.button1,R.id.button2,R.id.button3,R.id.button4,
             R.id.button5,R.id.button6,R.id.button7,R.id.button8,R.id.button9,R.id.button10,R.id.button11,R.id.button12,R.id.button13,R.id.button14,R.id.button15};
     private final  ArrayList<Integer> numeroBotonPresionado = new ArrayList();
+    private Instant start, end;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memoria);
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            start = Instant.now();
+        }
         //ArrayList<String> letras = new ArrayList();
         Random rndm = new Random();
         Handler handler = new Handler();
@@ -74,6 +86,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -103,11 +136,33 @@ public class memoria extends AppCompatActivity {
                             handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
+                                    matched.add(1);
                                     btn2.setText("-");
                                     boton.setText("-");
                                 }
                             }, 1000);
 
+                        }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
                         }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
@@ -141,6 +196,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -171,6 +247,27 @@ public class memoria extends AppCompatActivity {
                                 }
                             }, 1000);
 
+                        }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
                         }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
@@ -205,6 +302,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -236,6 +354,27 @@ public class memoria extends AppCompatActivity {
                                 }
                             }, 1000);
 
+                        }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
                         }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
@@ -269,6 +408,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -299,6 +459,27 @@ public class memoria extends AppCompatActivity {
                                 }
                             }, 1000);
 
+                        }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
                         }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
@@ -331,6 +512,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -361,6 +563,27 @@ public class memoria extends AppCompatActivity {
                                 }
                             }, 1000);
 
+                        }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
                         }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
@@ -393,6 +616,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -421,6 +665,27 @@ public class memoria extends AppCompatActivity {
                                 }
                             }, 1000);
 
+                        }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
                         }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
@@ -451,6 +716,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -479,6 +765,27 @@ public class memoria extends AppCompatActivity {
                                 }
                             }, 1000);
 
+                        }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
                         }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
@@ -509,6 +816,27 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()==8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
@@ -538,12 +866,35 @@ public class memoria extends AppCompatActivity {
                             }, 1000);
 
                         }
+                        if(letrasExtraidas.get(0) == letrasExtraidas.get(1)){
+                            matched.add(1);
+                            if(matched.size()>=8){
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    end = Instant.now();
+                                }
+                                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                                    long seconds = end.getEpochSecond() - start.getEpochSecond();
+
+                                    Log.d("msg", String.valueOf(seconds));
+                                    String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
+
+                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
+                                    estadisticasMemo.add(estadistica);
+
+                                    TextView msg = (TextView) findViewById(R.id.msg);
+                                    msg.setText(tiempo_partida);
+                                }
+                                matched.clear();
+                            }
+                        }
                         letrasExtraidas.clear();
                         numeroBotonPresionado.clear();
                     }
                 }
             }
         });
+
+
 
 
         handler.postDelayed(new Runnable() {
@@ -588,10 +939,13 @@ public class memoria extends AppCompatActivity {
 
     }
 
-    public void nuevoJuego(View view){
+   public void nuevoJuego(View view){
         Random rndm = new Random();
         Collections.shuffle(letras, rndm);
-        Log.d("msg", "se crea lista en nuevo juego");
+        matched.clear();
+        TextView tiempo = (TextView) findViewById(R.id.msg);
+       tiempo.setText("");
+
         Button btn1 = findViewById(R.id.button1);
         btn1.setText(String.valueOf(letras.get(0)));
         Button btn2= findViewById(R.id.button2);
@@ -668,10 +1022,8 @@ public class memoria extends AppCompatActivity {
 
     public void memoriaEstadisticas(View view){
         Intent intent= new Intent(memoria.this, memoria_estadistica.class);
+        intent.putExtra("estadisticas", estadisticasMemo);
         startActivity(intent);
     }
-
-
-
 
 }

@@ -262,4 +262,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonNuevo" />
 
+    <TextView
+        android:id="@+id/msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="41dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNuevo"
+        app:layout_constraintEnd_toEndOf="@+id/labelMemoria"
+        app:layout_constraintStart_toStartOf="@+id/labelMemoria"
+        app:layout_constraintTop_toBottomOf="@+id/labelMemoria"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
