@@ -21,7 +21,7 @@ public class memoria extends AppCompatActivity {
     private final ArrayList<String> letras = new ArrayList();
     private final ArrayList<String> letrasExtraidas = new ArrayList();
     private final ArrayList<Integer> matched = new ArrayList();
-    public ArrayList<String> estadisticasMemo = new ArrayList();
+    public ArrayList<String> estadisticas = new ArrayList();
     private final int[] botonesId = {R.id.button1,R.id.button2,R.id.button3,R.id.button4,
             R.id.button5,R.id.button6,R.id.button7,R.id.button8,R.id.button9,R.id.button10,R.id.button11,R.id.button12,R.id.button13,R.id.button14,R.id.button15};
     private final  ArrayList<Integer> numeroBotonPresionado = new ArrayList();
@@ -98,8 +98,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -155,8 +155,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -208,8 +208,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -260,8 +260,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -314,8 +314,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -367,8 +367,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -420,8 +420,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -472,8 +472,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -524,8 +524,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -576,8 +576,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -628,8 +628,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -678,8 +678,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -728,8 +728,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -778,8 +778,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -828,8 +828,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -878,8 +878,8 @@ public class memoria extends AppCompatActivity {
                                     Log.d("msg", String.valueOf(seconds));
                                     String tiempo_partida = "Terminó en " + Math.round((seconds/60.0)*100.0)/100.0 + " minutos";
 
-                                    String estadistica = "Juego " + (estadisticasMemo.size() + 1) + " : " + tiempo_partida;
-                                    estadisticasMemo.add(estadistica);
+                                    String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + tiempo_partida;
+                                    estadisticas.add(estadistica);
 
                                     TextView msg = (TextView) findViewById(R.id.msg);
                                     msg.setText(tiempo_partida);
@@ -900,37 +900,21 @@ public class memoria extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Button btn1 = findViewById(R.id.button1);
                 btn1.setText("-");
-                Button btn2= findViewById(R.id.button2);
                 btn2.setText("-");
-                Button btn3= findViewById(R.id.button3);
                 btn3.setText("-");
-                Button btn4= findViewById(R.id.button4);
                 btn4.setText("-");
-                Button btn5= findViewById(R.id.button5);
                 btn5.setText("-");
-                Button btn6= findViewById(R.id.button6);
                 btn6.setText("-");
-                Button btn7= findViewById(R.id.button7);
                 btn7.setText("-");
-                Button btn8= findViewById(R.id.button8);
                 btn8.setText("-");
-                Button btn9= findViewById(R.id.button9);
                 btn9.setText("-");
-                Button btn10= findViewById(R.id.button10);
                 btn10.setText("-");
-                Button btn11= findViewById(R.id.button11);
                 btn11.setText("-");
-                Button btn12= findViewById(R.id.button12);
                 btn12.setText("-");
-                Button btn13= findViewById(R.id.button13);
                 btn13.setText("-");
-                Button btn14= findViewById(R.id.button14);
                 btn14.setText("-");
-                Button btn15= findViewById(R.id.button15);
                 btn15.setText("-");
-                Button btn16= findViewById(R.id.button16);
                 btn16.setText("-");
             }
         }, 1000);
@@ -1018,11 +1002,16 @@ public class memoria extends AppCompatActivity {
             }
         }, 1000);
 
+        if(matched.size() < 8){
+            String estadistica = "Juego " + (estadisticas.size() + 1) + " : " + "Canceló";
+            estadisticas.add(estadistica);
+        }
+
     }
 
     public void memoriaEstadisticas(View view){
         Intent intent= new Intent(memoria.this, memoria_estadistica.class);
-        intent.putExtra("estadisticas", estadisticasMemo);
+        intent.putExtra("estadisticas", estadisticas);
         startActivity(intent);
     }
 
