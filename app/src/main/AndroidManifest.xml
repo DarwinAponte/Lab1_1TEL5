@@ -15,6 +15,7 @@
         tools:targetApi="31">
         <activity
             android:name=".memoria_estadistica"
+            android:label="@string/tituloJuegoMemoria"
             android:exported="false"
             android:parentActivityName=".memoria"/>
         <activity
@@ -24,6 +25,7 @@
             android:parentActivityName=".MainTresEnRaya" />
         <activity
             android:name=".memoria"
+            android:label="@string/tituloInicio"
             android:exported="true"
             android:parentActivityName=".MainActivity" />
         <activity

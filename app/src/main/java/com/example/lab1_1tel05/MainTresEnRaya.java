@@ -53,13 +53,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt11=txt11.getText().toString();
                 if((contador % 2)==0){
                     txt11.setText("O");
-
                     //jugador1
                     matriz[0][0] = a;
                     contador ++;
                 }else{
                     txt11.setText("X");
-
                     //jugador2
                     matriz[0][0] = b;
                     contador ++;
@@ -74,13 +72,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt12=txt12.getText().toString();
                 if((contador % 2)==0){
                     txt12.setText("O");
-
                     //jugador1
                     matriz[0][1] = a;
                     contador ++;
                 }else{
                     txt12.setText("X");
-
                     //jugador2
                     matriz[0][1] = b;
                     contador ++;
@@ -95,13 +91,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt12=txt13.getText().toString();
                 if((contador % 2)==0){
                     txt13.setText("O");
-
                     //jugador1
                     matriz[0][2] = a;
                     contador ++;
                 }else{
                     txt13.setText("X");
-
                     //jugador2
                     matriz[0][2] = b;
                     contador ++;
@@ -118,13 +112,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt21=txt21.getText().toString();
                 if((contador % 2)==0){
                     txt21.setText("O");
-
                     //jugador1
                     matriz[1][0] = a;
                     contador ++;
                 }else{
                     txt21.setText("X");
-
                     //jugador2
                     matriz[1][0] = b;
                     contador ++;
@@ -139,13 +131,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt22=txt22.getText().toString();
                 if((contador % 2)==0){
                     txt22.setText("O");
-
                     //jugador1
                     matriz[1][1] = a;
                     contador ++;
                 }else{
                     txt22.setText("X");
-
                     //jugador2
                     matriz[1][1] = b;
                     contador ++;
@@ -160,13 +150,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt23=txt23.getText().toString();
                 if((contador % 2)==0){
                     txt23.setText("O");
-
                     //jugador1
                     matriz[1][2] = a;
                     contador ++;
                 }else{
                     txt23.setText("X");
-
                     //jugador2
                     matriz[1][2] = b;
                     contador ++;
@@ -176,20 +164,17 @@ public class MainTresEnRaya extends AppCompatActivity {
             });
 
 
-
             Button btn31= (Button) findViewById(R.id.btn_31);
             btn31.setOnClickListener(view -> {
                 TextView txt31=findViewById(R.id.btn_31);
                 String sTxt31=txt31.getText().toString();
                 if((contador % 2)==0){
                     txt31.setText("O");
-
                     //jugador1
                     matriz[2][0] = a;
                     contador ++;
                 }else{
                     txt31.setText("X");
-
                     //jugador2
                     matriz[2][0] = b;
                     contador ++;
@@ -204,13 +189,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt32=txt32.getText().toString();
                 if((contador % 2)==0){
                     txt32.setText("O");
-
                     //jugador1
                     matriz[2][1] = a;
                     contador ++;
                 }else{
                     txt32.setText("X");
-
                     //jugador2
                     matriz[2][1] = b;
                     contador ++;
@@ -225,13 +208,11 @@ public class MainTresEnRaya extends AppCompatActivity {
                 String sTxt33=txt33.getText().toString();
                 if((contador % 2)==0){
                     txt33.setText("O");
-
                     //jugador1
                     matriz[2][2] = a;
                     contador ++;
                 }else{
                     txt33.setText("X");
-
                     //jugador2
                     matriz[2][2] = b;
                     contador ++;

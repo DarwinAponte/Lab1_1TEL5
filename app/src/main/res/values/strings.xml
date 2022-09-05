@@ -2,5 +2,6 @@
     <string name="app_name">APPSIoT-Lab1</string>
     <string name="tituloInicio">Inicio</string>
     <string name="tituloJuego3rayas">Juego: Tres en Raya</string>
+    <string name="tituloJuegoMemoria">Juego: Memoria</string>
 
 </resources>

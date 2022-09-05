@@ -22,17 +22,20 @@ public class MainEstadistica3Raya extends AppCompatActivity {
         List<String> statusPartido = intent.getStringArrayListExtra("partidas");
 
         TextView textView = findViewById(R.id.l3e_estadisticasValue);
-        int n=1;
-        String reporte = "";
-        for(String s: statusPartido){
-            reporte = reporte +"Juego "+String.valueOf(n) + ": "+s+ "\n";
-            //textView.setText(s);
-            n++;
-            Log.d("msg",s);
+
+        if(statusPartido !=null && !statusPartido.isEmpty()){
+            int n=1;
+            String reporte = "";
+            for(String s: statusPartido){
+                reporte = reporte +"Juego "+String.valueOf(n) + ": "+s+ "\n";
+                //textView.setText(s);
+                n++;
+                Log.d("msg",s);
+            }
+            textView.setText(reporte);
+        }else{
+            textView.setText("Todavía no se ha iniciado una partida");
         }
-
-        textView.setText(reporte);
-
 
 
     }
